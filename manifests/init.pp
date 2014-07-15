@@ -20,6 +20,14 @@ class zookeeper (
     require => Exec['get-server'],
   }
 
+  file { "/usr/local/zookeeper-${version}":
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    recurse => true,
+    require => Exec['untar-server'],
+  }
+
   file { '/usr/local/zookeeper':
     ensure  => 'link',
     owner   => 'root',
