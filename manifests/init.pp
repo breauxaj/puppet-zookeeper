@@ -53,7 +53,7 @@ class zookeeper (
     ensure     => present,
     gid        => 2181,
     home       => '/var/lib/zookeeper',
-    shell      => '/sbin/nologin',
+    shell      => '/bin/bash',
     managehome => true,
     uid        => 2181,
   }
