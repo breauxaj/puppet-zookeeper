@@ -57,7 +57,7 @@ case "$1" in
     start
     ;;
   status)
-    status -p $ZOOKEEPER_PID
+    status -p $ZOOKEEPER_PID zookeeper
 	  RETVAL=$?
 	  ;;
   *)
