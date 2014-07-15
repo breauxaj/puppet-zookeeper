@@ -1,0 +1,5 @@
+# MANAGED BY PUPPET!
+if [ -d /usr/local/zookeeper ]; then
+  export ZOOKEEPER=/usr/local/zookeeper
+  export PATH=${ZOOKEEPER}/bin:${PATH}
+fi
