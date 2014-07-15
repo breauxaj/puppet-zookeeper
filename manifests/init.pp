@@ -28,12 +28,26 @@ class zookeeper (
     require => Exec['untar-server'],
   }
 
-  file { '/etc/init.d/zookeeper':
+  file { '/etc/profile.d/zookeeper.sh':
     ensure => present,
     owner  => 'root',
     group  => 'root',
-    mode   => '0755',
-    source => 'puppet:///modules/zookeeper/zookeeper.init'
+    mode   => '0644',
+    source => 'puppet:///modules/zookeeper/profile.txt',
+  }
+
+  group { 'zookeeper':
+    ensure => present,
+    gid    => 2181,
+  }
+
+  user { 'zookeeper':
+    ensure     => present,
+    gid        => 2181,
+    home       => '/var/lib/zookeeper',
+    shell      => '/sbin/nologin',
+    managehome => true,
+    uid        => 2181,
   }
 
 }
