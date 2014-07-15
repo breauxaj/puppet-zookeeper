@@ -21,7 +21,7 @@ fi
 start() {
   echo -n $"Starting zookeeper: "
   if [ -f $ZOOKEEPER_HOME/bin/zkServer.sh ]; then
-    /bin/su - $RUNAS -c $ZOOKEEPER_HOME/bin/zkServer.sh start #> /dev/null 2>&1
+    /bin/su - $RUNAS -c $ZOOKEEPER_HOME/bin/zkServer.sh start > /dev/null 2>&1
     RETVAL=$?
     echo
     [ $RETVAL = 0 ] && touch /var/lock/subsys/zookeeper
@@ -33,7 +33,7 @@ start() {
 stop() {
   echo -n $"Stopping zookeeper: "
   if [ -f $ZOOKEEPER_HOME/bin/zkServer.sh ]; then
-    /bin/su - $RUNAS -c $ZOOKEEPER_HOME/bin/zkServer.sh stop #> /dev/null 2>&1
+    /bin/su - $RUNAS -c $ZOOKEEPER_HOME/bin/zkServer.sh stop > /dev/null 2>&1
     RETVAL=$?
     echo
     [ $RETVAL = 0 ] && rm -f /var/lock/subsys/zookeeper
@@ -56,7 +56,7 @@ case "$1" in
     start
     ;;
   status)
-    $ZOOKEEPER_HOME/bin/zkServer.sh status #> /dev/null 2>&1
+    $ZOOKEEPER_HOME/bin/zkServer.sh status > /dev/null 2>&1
 	  RETVAL=$?
 	  ;;
   *)
