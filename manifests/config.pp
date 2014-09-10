@@ -53,7 +53,7 @@ define zookeeper::config (
     owner   => 'zookeeper',
     group   => 'zookeeper',
     mode    => '0644',
-    content => $::hostname,
+    content => '1',
     require => File[$datadir],
   }
 
