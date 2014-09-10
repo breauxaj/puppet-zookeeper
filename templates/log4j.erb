@@ -1,15 +1,15 @@
 # Define some default values that can be overridden by system properties
 zookeeper.root.logger=INFO, ROLLINGFILE
 zookeeper.console.threshold=INFO
-<% if log_dir and ! log_dir.empty? -%>
-zookeeper.log.dir=<%= log_dir %>
+<% if datadir and ! datadir.empty? -%>
+zookeeper.log.dir=<%= datadir %>
 <% else -%>
 zookeeper.log.dir=.
 <% end -%>
 zookeeper.log.file=zookeeper.log
 zookeeper.log.threshold=DEBUG
-<% if log_dir and ! log_dir.empty? -%>
-zookeeper.tracelog.dir=<%= log_dir %>
+<% if datadir and ! datadir.empty? -%>
+zookeeper.tracelog.dir=<%= datadir %>
 <% else -%>
 zookeeper.tracelog.dir=.
 <% end -%>
