@@ -4,22 +4,22 @@ tickTime=<%= ticktime %>
 <% else -%>
 tickTime=2000
 <% end -%>
-# The number of ticks that the initial 
+# The number of ticks that the initial
 # synchronization phase can take
 <% if initlimit and ! initlimit.empty? -%>
 initLimit=<%= initlimit %>
 <% else -%>
-initLimit=10
+initLimit=5
 <% end -%>
-# The number of ticks that can pass between 
+# The number of ticks that can pass between
 # sending a request and getting an acknowledgement
 <% if synclimit and ! synclimit.empty? -%>
 syncLimit=<%= synclimit %>
 <% else -%>
-syncLimit=5
+syncLimit=2
 <% end -%>
 # the directory where the snapshot is stored.
-# do not use /tmp for storage, /tmp here is just 
+# do not use /tmp for storage, /tmp here is just
 # example sakes.
 <% if datadir and ! datadir.empty? -%>
 dataDir=<%= datadir %>
@@ -40,7 +40,7 @@ maxClientCnxns=<%= maxclientcnxns -%>
 #maxClientCnxns=60
 <% end -%>
 #
-# Be sure to read the maintenance section of the 
+# Be sure to read the maintenance section of the
 # administrator guide before turning on autopurge.
 #
 # http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance

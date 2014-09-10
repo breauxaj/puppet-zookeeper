@@ -1,7 +1,7 @@
 define zookeeper::config (
   $ticktime = '2000',
-  $initlimit = '10',
-  $synclimit = '5',
+  $initlimit = '5',
+  $synclimit = '2',
   $datadir = '/var/zookeeper',
   $clientport = '2181',
   $maxclientcnxns = '',
