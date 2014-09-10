@@ -54,8 +54,8 @@ autopurge.purgeInterval=<%= autopurge_purgeinterval %>
 <% end -%>
 # Servers in the cluster
 <% if servers and ! servers.empty? -%>
-<% servers.to_enum.with_index(1).each do |s, idx| -%>
-<%= "server.#{idx}=#{s}:2888:3888" %>
+<% servers.to_enum.with_index(1).each do |server, idx| -%>
+<%= "server.#{idx}=#{server}:2888:3888" %>
 <% end -%>
 <% else -%>
 #server.1=zoo1:2888:3888
