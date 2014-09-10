@@ -39,12 +39,6 @@ maxClientCnxns=<%= maxclientcnxns -%>
 <% else -%>
 #maxClientCnxns=60
 <% end -%>
-#
-# Be sure to read the maintenance section of the
-# administrator guide before turning on autopurge.
-#
-# http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance
-#
 # The number of snapshots to retain in dataDir
 <% if autopurge_snapretaincount and ! autopurge_snapretaincount.empty? -%>
 autopurge.snapRetainCount=<%= autopurge_snapretaincount %>
@@ -57,4 +51,12 @@ autopurge.snapRetainCount=<%= autopurge_snapretaincount %>
 autopurge.purgeInterval=<%= autopurge_purgeinterval %>
 <% else -%>
 #autopurge.purgeInterval=1
+<% end -%>
+# Servers in the cluster
+<% if servers and ! servers.empty? -%>
+<% servers.to_enum.with_index(1).each do |s, idx| -%>
+<%= "server.#{idx}=#{s}:2888:3888" %>
+<% end -%>
+<% else -%>
+#server.1=zoo1:2888:3888
 <% end -%>
