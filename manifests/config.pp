@@ -6,7 +6,8 @@ define zookeeper::config (
   $clientport = '2181',
   $maxclientcnxns = '',
   $autopurge_snapretaincount = '',
-  $autopurge_purgeinterval = ''
+  $autopurge_purgeinterval = '',
+  $servers = ''
 ) {
   $config = $::operatingsystem ? {
     /(?i-mx:centos|fedora|redhat|scientific)/ => '/usr/local/zookeeper/conf/zoo.cfg',
@@ -15,6 +16,8 @@ define zookeeper::config (
   $service = $::operatingsystem ? {
     /(?i-mx:centos|fedora|redhat|scientific)/ => [ 'zookeeper' ],
   }
+
+  $myid = "${datadir}/myid"
 
   file { $config:
     ensure  => present,
@@ -30,6 +33,15 @@ define zookeeper::config (
     owner  => 'zookeeper',
     group  => 'zookeeper',
     mode   => '0755',
+  }
+
+  file { $myid:
+    ensure  => present,
+    owner   => 'zookeeper',
+    group   => 'zookeeper',
+    mode    => '0644',
+    content => $::hostname,
+    require => File[$datadir],
   }
 
 }
