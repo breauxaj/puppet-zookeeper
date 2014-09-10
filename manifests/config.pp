@@ -13,6 +13,10 @@ define zookeeper::config (
     /(?i-mx:centos|fedora|redhat|scientific)/ => '/usr/local/zookeeper/conf/zoo.cfg',
   }
 
+  $log4j = $::operatingsystem ? {
+    /(?i-mx:centos|fedora|redhat|scientific)/ => '/usr/local/zookeeper/conf/log4j.properties',
+  }
+
   $service = $::operatingsystem ? {
     /(?i-mx:centos|fedora|redhat|scientific)/ => [ 'zookeeper' ],
   }
@@ -25,6 +29,15 @@ define zookeeper::config (
     group   => 'root',
     mode    => '0644',
     content => template('zookeeper/zoo.erb'),
+    notify  => Service[$service],
+  }
+
+  file { $log4j:
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template('zookeeper/log4j.erb'),
     notify  => Service[$service],
   }
 
