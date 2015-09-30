@@ -1,3 +1,10 @@
-export ZOOCFGDIR="/Users/marco/.zoo"
-export ZOODATA="/Users/marco/.zoo/data"
-export ZOOKEEPER_HOME="/Users/marco/Dev/zookeeper"
+# MANAGED BY PUPPET!
+if [ -d /usr/local/zookeeper ]; then
+  export ZOOKEEPER_HOME=/usr/local/zookeeper
+  export PATH=${ZOOKEEPER_HOME}/bin:${PATH}
+fi
+
+if [ -d /var/zookeeper ]; then
+  export ZOOCFGDIR=/var/zookeeper
+  export ZOODATA=${ZOOCFGDIR}/data
+fi
