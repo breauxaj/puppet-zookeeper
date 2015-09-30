@@ -36,7 +36,13 @@ class zookeeper (
     require => Exec['untar-zoo'],
   }
   
-  export ZK_HOME=/home/user1/zookeeper-3.4.6
+  file { '/etc/profile.d/zookeeper.sh':
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => 'export ZK_HOME=/usr/local/zookeeper',
+  }
 
   group { 'zookeeper':
     ensure => present,
