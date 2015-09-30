@@ -16,7 +16,7 @@ zookeeper::service { 'default': ensure => running, enable => true }
 zookeeper::config {
   "RUNAS":          value => 'zookeeper';
   "ZOOKEEPER_HOME": value => '/usr/local/zookeeper';
-  "ZOOKEEPER_PID":  value => '/var/zookeeper/zookeeper_server.pid';
+  "ZOOKEEPER_PID":  value => '/var/run/zookeeper.pid';
 }
 ```
 

@@ -15,7 +15,7 @@ if [ -f /etc/sysconfig/zookeeper ]; then
 else
   RUNAS=zookeeper
   ZOOKEEPER_HOME=/usr/local/zookeeper
-  ZOOKEEPER_PID=/var/zookeeper/zookeeper_server.pid
+  ZOOKEEPER_PID=/var/run/zookeeper.pid
 fi
 
 # Functions for start/stop
