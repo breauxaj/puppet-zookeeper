@@ -1,0 +1,14 @@
+[Unit]
+Description=Zookeeper
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/zookeeper
+ExecStart=/usr/local/zookeeper/bin/zkServer.sh start
+ExecStop=/usr/local/zookeeper/bin/zkServer.sh stop
+User=zookeeper
+Group=zookeeper
+
+[Install]
+WantedBy=multi-user.target
