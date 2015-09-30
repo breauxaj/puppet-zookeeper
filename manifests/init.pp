@@ -37,11 +37,11 @@ class zookeeper (
   }
   
   file { '/etc/profile.d/zookeeper.sh':
-    ensure  => present,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => 'export ZK_HOME=/usr/local/zookeeper',
+    ensure => present,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+    source => 'puppet:///modules/zookeeper/profile.txt',
   }
 
   group { 'zookeeper':
