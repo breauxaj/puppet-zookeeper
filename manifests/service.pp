@@ -48,9 +48,8 @@ define zookeeper::service (
             owner   => 'root',
             group   => 'root',
             target  => '/lib/systemd/system/zookeeper.service'
-          }
-
-          systemctl::reload { 'zookeeper': }
+          } ~>
+          Exec['systemctl-daemon-reload']
         }
       }
     }
