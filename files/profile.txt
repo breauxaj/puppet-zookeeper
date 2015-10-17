@@ -4,7 +4,7 @@ if [ -d /usr/local/zookeeper ]; then
   export PATH=${ZOOKEEPER_HOME}/bin:${PATH}
 fi
 
-if [ -d /var/zookeeper ]; then
+if [ -d /var/lib/zookeeper ]; then
   export ZOOCFGDIR=/var/zookeeper
   export ZOODATA=${ZOOCFGDIR}/data
 fi
